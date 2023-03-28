@@ -3,8 +3,8 @@ export interface CalcProps {
   currentOperand: string;
 }
 export class Calculator {
-  operation: string;
-  equals: string;
+  operation: string = '';
+  equals: string = '';
 
   constructor(public data: CalcProps) {}
 
@@ -81,7 +81,7 @@ export class Calculator {
     });
   }
   computation(): void {
-    let ans: number;
+    let ans: number = 0;
     const prev = parseFloat(this.data.prevOperand);
     const curr = parseFloat(this.data.currentOperand);
     if (isNaN(prev) || isNaN(curr)) return;

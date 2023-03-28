@@ -1,0 +1,27 @@
+{
+  "name": "basic-calculator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:build": "tsc -w",
+    "start:run": "nondemon build/index.js",
+    "start:dev": "parcel index.html",
+    "start": "concurrently npm:start:*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mayor1234/Basic-Calculator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mayor1234/Basic-Calculator/issues"
+  },
+  "homepage": "https://github.com/Mayor1234/Basic-Calculator#readme",
+  "dependencies": {
+    "concurrently": "^7.6.0",
+    "nodemon": "^2.0.22"
+  }
+}

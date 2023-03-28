@@ -120,141 +120,167 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 })({"src/Calculator.ts":[function(require,module,exports) {
 "use strict";
 
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.Calculator = void 0;
-var Calculator = /** @class */function () {
+var Calculator = /*#__PURE__*/function () {
   function Calculator(data) {
+    _classCallCheck(this, Calculator);
     this.data = data;
+    this.operation = '';
+    this.equals = '';
   }
-  Calculator.prototype.clear = function () {
-    this.data.currentOperand = '';
-    this.data.prevOperand = '';
-    this.operation = '';
-    this.equals = '0';
-  };
-  Calculator.prototype.del = function () {
-    this.data.currentOperand = this.data.currentOperand.slice(0, -1);
-  };
-  Calculator.prototype.operationSelect = function (operation) {
-    if (this.data.currentOperand === '') return;
-    if (this.data.prevOperand !== '') {
-      this.computation();
+  _createClass(Calculator, [{
+    key: "clear",
+    value: function clear() {
+      this.data.currentOperand = '';
+      this.data.prevOperand = '';
+      this.operation = '';
+      this.equals = '0';
     }
-    this.data.prevOperand = this.data.currentOperand;
-    this.operation = operation;
-    this.data.currentOperand = '';
-  };
-  Calculator.prototype.appendNumber = function (numberSets) {
-    if (numberSets === '.' && this.data.currentOperand.includes('.')) return;
-    if (numberSets === '+/-') {
+  }, {
+    key: "del",
+    value: function del() {
+      this.data.currentOperand = this.data.currentOperand.slice(0, -1);
+    }
+  }, {
+    key: "operationSelect",
+    value: function operationSelect(operation) {
       if (this.data.currentOperand === '') return;
-      var x = -this.data.currentOperand;
-      return this.data.currentOperand = x.toString();
-    }
-    this.data.currentOperand += numberSets;
-  };
-  Calculator.prototype.eventing = function () {
-    var _this = this;
-    var btn = document.querySelector('.calc-buttons');
-    btn === null || btn === void 0 ? void 0 : btn.addEventListener('click', function (e) {
-      if (e !== null && e.target !== null) {
-        var element = e.target;
-        if (element.matches('[data-number')) {
-          var numberData = element.textContent;
-          if (numberData !== null) {
-            _this.appendNumber(numberData);
-            _this.updateDisplay();
-          }
-        } else if (element.matches('[data-operation]')) {
-          var dataOperation = element.textContent;
-          if (dataOperation !== null) {
-            _this.operationSelect(dataOperation);
-            _this.updateDisplay();
-          }
-        } else if (element.matches('[data-clear]')) {
-          var dataOperation = element.textContent;
-          if (dataOperation !== null) {
-            _this.clear();
-            _this.updateDisplay();
-          }
-        } else if (element.matches('[data-delete]')) {
-          var dataOperation = element.textContent;
-          if (dataOperation !== null) {
-            _this.del();
-            _this.updateDisplay();
-          }
-        } else if (element.matches('[data-equals]')) {
-          var dataOperation = element.textContent;
-          if (dataOperation !== null) {
-            _this.computation();
-            _this.updateDisplay();
-          }
-        }
+      if (this.data.prevOperand !== '') {
+        this.computation();
       }
-    });
-  };
-  Calculator.prototype.computation = function () {
-    var ans;
-    var prev = parseFloat(this.data.prevOperand);
-    var curr = parseFloat(this.data.currentOperand);
-    if (isNaN(prev) || isNaN(curr)) return;
-    switch (this.operation) {
-      case '+':
-        ans = prev + curr;
-        break;
-      case '-':
-        ans = prev - curr;
-        break;
-      case 'x':
-        ans = prev * curr;
-        break;
-      case '/':
-        ans = prev / curr;
-        break;
-      case '%':
-        ans = prev / 100 * curr;
-        break;
-      case '+/-':
-        ans = -curr;
-        break;
-      default:
-        break;
+      this.data.prevOperand = this.data.currentOperand;
+      this.operation = operation;
+      this.data.currentOperand = '';
     }
-    this.equals = parseFloat(ans.toFixed(4)).toString();
-    this.data.prevOperand = '';
-    this.operation = '';
-    this.data.currentOperand = this.equals;
-  };
-  Calculator.prototype.updateDisplay = function () {
-    var prevOp = document.querySelector('.input-screen .prev-op');
-    var currOp = document.querySelector('.input-screen .curr-op');
-    var outputScreen = document.querySelector('.output-screen');
-    var operator = document.querySelector('.input-screen .operator');
-    if (prevOp !== null && currOp !== null && operator !== null && outputScreen !== null) {
-      prevOp.textContent = this.data.prevOperand;
-      currOp.textContent = this.data.currentOperand;
-      operator.textContent = this.operation;
-      outputScreen.textContent = this.equals;
+  }, {
+    key: "appendNumber",
+    value: function appendNumber(numberSets) {
+      if (numberSets === '.' && this.data.currentOperand.includes('.')) return;
+      if (numberSets === '+/-') {
+        if (this.data.currentOperand === '') return;
+        var x = -this.data.currentOperand;
+        return this.data.currentOperand = x.toString();
+      }
+      this.data.currentOperand += numberSets;
     }
-  };
-  Calculator.prototype.toggleTheme = function () {
-    var container = document.querySelector('.container');
-    var toggle = document.querySelector('.theme-toggle input');
-    var label = document.querySelector('.theme-toggle label');
-    if (toggle !== null && label !== null) {
-      toggle.addEventListener('click', function () {
-        if (toggle.checked) {
-          container.classList.replace('light', 'dark');
-          label.style.background = '#333';
-        } else {
-          container.classList.replace('dark', 'light');
-          label.style.background = '#d3d4d6';
+  }, {
+    key: "eventing",
+    value: function eventing() {
+      var _this = this;
+      var btn = document.querySelector('.calc-buttons');
+      btn === null || btn === void 0 ? void 0 : btn.addEventListener('click', function (e) {
+        if (e !== null && e.target !== null) {
+          var element = e.target;
+          if (element.matches('[data-number')) {
+            var numberData = element.textContent;
+            if (numberData !== null) {
+              _this.appendNumber(numberData);
+              _this.updateDisplay();
+            }
+          } else if (element.matches('[data-operation]')) {
+            var dataOperation = element.textContent;
+            if (dataOperation !== null) {
+              _this.operationSelect(dataOperation);
+              _this.updateDisplay();
+            }
+          } else if (element.matches('[data-clear]')) {
+            var _dataOperation = element.textContent;
+            if (_dataOperation !== null) {
+              _this.clear();
+              _this.updateDisplay();
+            }
+          } else if (element.matches('[data-delete]')) {
+            var _dataOperation2 = element.textContent;
+            if (_dataOperation2 !== null) {
+              _this.del();
+              _this.updateDisplay();
+            }
+          } else if (element.matches('[data-equals]')) {
+            var _dataOperation3 = element.textContent;
+            if (_dataOperation3 !== null) {
+              _this.computation();
+              _this.updateDisplay();
+            }
+          }
         }
       });
     }
-  };
+  }, {
+    key: "computation",
+    value: function computation() {
+      var ans = 0;
+      var prev = parseFloat(this.data.prevOperand);
+      var curr = parseFloat(this.data.currentOperand);
+      if (isNaN(prev) || isNaN(curr)) return;
+      switch (this.operation) {
+        case '+':
+          ans = prev + curr;
+          break;
+        case '-':
+          ans = prev - curr;
+          break;
+        case 'x':
+          ans = prev * curr;
+          break;
+        case '/':
+          ans = prev / curr;
+          break;
+        case '%':
+          ans = prev / 100 * curr;
+          break;
+        case '+/-':
+          ans = -curr;
+          break;
+        default:
+          break;
+      }
+      this.equals = parseFloat(ans.toFixed(4)).toString();
+      this.data.prevOperand = '';
+      this.operation = '';
+      this.data.currentOperand = this.equals;
+    }
+  }, {
+    key: "updateDisplay",
+    value: function updateDisplay() {
+      var prevOp = document.querySelector('.input-screen .prev-op');
+      var currOp = document.querySelector('.input-screen .curr-op');
+      var outputScreen = document.querySelector('.output-screen');
+      var operator = document.querySelector('.input-screen .operator');
+      if (prevOp !== null && currOp !== null && operator !== null && outputScreen !== null) {
+        prevOp.textContent = this.data.prevOperand;
+        currOp.textContent = this.data.currentOperand;
+        operator.textContent = this.operation;
+        outputScreen.textContent = this.equals;
+      }
+    }
+  }, {
+    key: "toggleTheme",
+    value: function toggleTheme() {
+      var container = document.querySelector('.container');
+      var toggle = document.querySelector('.theme-toggle input');
+      var label = document.querySelector('.theme-toggle label');
+      if (toggle !== null && label !== null) {
+        toggle.addEventListener('click', function () {
+          if (toggle.checked) {
+            container.classList.replace('light', 'dark');
+            label.style.background = '#333';
+          } else {
+            container.classList.replace('dark', 'light');
+            label.style.background = '#d3d4d6';
+          }
+        });
+      }
+    }
+  }]);
   return Calculator;
 }();
 exports.Calculator = Calculator;
@@ -296,7 +322,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54133" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58204" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
