@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start:build": "tsc -w",
-    "start:run": "nondemon build/index.js",
+    "start:run": "npm run build && nodemon build/index.js",
     "start:dev": "parcel index.html",
-    "start": "concurrently npm:start:*"
+    "start": "concurrently npm:start:*",
+    "build": "rimraf ./build && tsc"
   },
   "repository": {
     "type": "git",
@@ -23,5 +24,8 @@
   "dependencies": {
     "concurrently": "^7.6.0",
     "nodemon": "^2.0.22"
+  },
+  "devDependencies": {
+    "rimraf": "^4.4.1"
   }
 }
