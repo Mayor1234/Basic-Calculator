@@ -7,8 +7,7 @@
     "start:build": "tsc -w",
     "start:run": "npm run build && nodemon build/index.js",
     "start:dev": "parcel index.html",
-    "start": "concurrently npm:start:*",
-    "build": "rimraf ./dist && tsc"
+    "start": "concurrently npm:start:*"
   },
   "repository": {
     "type": "git",
