@@ -4,6 +4,8 @@ exports.Calculator = void 0;
 class Calculator {
     constructor(data) {
         this.data = data;
+        this.operation = '';
+        this.equals = '';
     }
     clear() {
         this.data.currentOperand = '';
@@ -79,7 +81,7 @@ class Calculator {
         });
     }
     computation() {
-        let ans;
+        let ans = 0;
         const prev = parseFloat(this.data.prevOperand);
         const curr = parseFloat(this.data.currentOperand);
         if (isNaN(prev) || isNaN(curr))
