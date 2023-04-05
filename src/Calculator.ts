@@ -3,10 +3,20 @@ export interface CalcProps {
   currentOperand: string;
 }
 export class Calculator {
-  operation: string = '';
-  equals: string = '';
+  operation: string;
+  equals: string;
 
-  constructor(public data: CalcProps) {}
+  constructor(private data: CalcProps) {
+    this.operation = '';
+    this.equals = '';
+  }
+
+  static buildCalc(): Calculator {
+    return new Calculator({
+      currentOperand: '',
+      prevOperand: '',
+    });
+  }
 
   clear(): void {
     this.data.currentOperand = '';

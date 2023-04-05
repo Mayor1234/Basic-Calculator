@@ -7,6 +7,12 @@ class Calculator {
         this.operation = '';
         this.equals = '';
     }
+    static buildCalc() {
+        return new Calculator({
+            currentOperand: '',
+            prevOperand: '',
+        });
+    }
     clear() {
         this.data.currentOperand = '';
         this.data.prevOperand = '';

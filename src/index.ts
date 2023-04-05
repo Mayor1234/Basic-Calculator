@@ -1,8 +1,5 @@
 import { Calculator } from './Calculator';
 
-const calculator = new Calculator({
-  currentOperand: '',
-  prevOperand: '',
-});
+const calculator = Calculator.buildCalc();
 calculator.eventing();
 calculator.toggleTheme();

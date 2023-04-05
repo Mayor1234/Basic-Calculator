@@ -280,6 +280,14 @@ var Calculator = /*#__PURE__*/function () {
         });
       }
     }
+  }], [{
+    key: "buildCalc",
+    value: function buildCalc() {
+      return new Calculator({
+        currentOperand: '',
+        prevOperand: ''
+      });
+    }
   }]);
   return Calculator;
 }();
@@ -291,10 +299,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var Calculator_1 = require("./Calculator");
-var calculator = new Calculator_1.Calculator({
-  currentOperand: '',
-  prevOperand: ''
-});
+var calculator = Calculator_1.Calculator.buildCalc();
 calculator.eventing();
 calculator.toggleTheme();
 },{"./Calculator":"src/Calculator.ts"}],"../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
@@ -322,7 +327,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56564" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58012" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
