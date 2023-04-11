@@ -124,32 +124,25 @@ class Calculator {
         const currOp = document.querySelector('.input-screen .curr-op');
         const outputScreen = document.querySelector('.output-screen');
         const operator = document.querySelector('.input-screen .operator');
-        if (prevOp !== null &&
-            currOp !== null &&
-            operator !== null &&
-            outputScreen !== null) {
-            prevOp.textContent = this.data.prevOperand;
-            currOp.textContent = this.data.currentOperand;
-            operator.textContent = this.operation;
-            outputScreen.textContent = this.equals;
-        }
+        prevOp.textContent = this.data.prevOperand;
+        currOp.textContent = this.data.currentOperand;
+        operator.textContent = this.operation;
+        outputScreen.textContent = this.equals;
     }
     toggleTheme() {
         const container = document.querySelector('.container');
         const toggle = document.querySelector('.theme-toggle input');
         const label = document.querySelector('.theme-toggle label');
-        if (toggle !== null && label !== null) {
-            toggle.addEventListener('click', () => {
-                if (toggle.checked) {
-                    container.classList.replace('light', 'dark');
-                    label.style.background = '#333';
-                }
-                else {
-                    container.classList.replace('dark', 'light');
-                    label.style.background = '#d3d4d6';
-                }
-            });
-        }
+        toggle.addEventListener('click', () => {
+            if (toggle.checked) {
+                container.classList.replace('light', 'dark');
+                label.style.background = '#333';
+            }
+            else {
+                container.classList.replace('dark', 'light');
+                label.style.background = '#d3d4d6';
+            }
+        });
     }
 }
 exports.Calculator = Calculator;

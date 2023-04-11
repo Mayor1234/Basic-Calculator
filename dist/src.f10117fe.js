@@ -255,12 +255,10 @@ var Calculator = /*#__PURE__*/function () {
       var currOp = document.querySelector('.input-screen .curr-op');
       var outputScreen = document.querySelector('.output-screen');
       var operator = document.querySelector('.input-screen .operator');
-      if (prevOp !== null && currOp !== null && operator !== null && outputScreen !== null) {
-        prevOp.textContent = this.data.prevOperand;
-        currOp.textContent = this.data.currentOperand;
-        operator.textContent = this.operation;
-        outputScreen.textContent = this.equals;
-      }
+      prevOp.textContent = this.data.prevOperand;
+      currOp.textContent = this.data.currentOperand;
+      operator.textContent = this.operation;
+      outputScreen.textContent = this.equals;
     }
   }, {
     key: "toggleTheme",
@@ -268,17 +266,15 @@ var Calculator = /*#__PURE__*/function () {
       var container = document.querySelector('.container');
       var toggle = document.querySelector('.theme-toggle input');
       var label = document.querySelector('.theme-toggle label');
-      if (toggle !== null && label !== null) {
-        toggle.addEventListener('click', function () {
-          if (toggle.checked) {
-            container.classList.replace('light', 'dark');
-            label.style.background = '#333';
-          } else {
-            container.classList.replace('dark', 'light');
-            label.style.background = '#d3d4d6';
-          }
-        });
-      }
+      toggle.addEventListener('click', function () {
+        if (toggle.checked) {
+          container.classList.replace('light', 'dark');
+          label.style.background = '#333';
+        } else {
+          container.classList.replace('dark', 'light');
+          label.style.background = '#d3d4d6';
+        }
+      });
     }
   }], [{
     key: "buildCalc",
@@ -327,7 +323,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59644" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50339" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
