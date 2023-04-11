@@ -40,15 +40,14 @@ body {
   align-items: center;
   height: 80vh;
   margin: 5rem auto;
-  background-color: red;
-  overflow: hidden;
 }
 .wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 80%;
+  width: 300px;
   border-radius: 8px;
   border: 0.5px solid var(--dark2);
   box-shadow: 2px 2px 5px rgb(193, 192, 192);
@@ -57,7 +56,7 @@ body {
 .result-screen {
   display: flex;
   flex-direction: column;
-  height: 20vh;
+  height: 25vh;
   width: 100%;
   padding: 2rem 1rem;
   justify-content: space-between;
@@ -78,12 +77,12 @@ body {
 .calc-buttons {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  max-width: 100%;
-  height: 60vh;
+  width: 100%;
+  height: 55vh;
 }
 
 .calc-btn {
-  padding: 1.2rem;
+  padding: 0.5rem 1.3rem;
   text-align: center;
   cursor: pointer;
   font-size: 1.2rem;
@@ -130,8 +129,8 @@ body {
   display: flex;
   justify-content: flex-end;
   width: 200px;
-  top: 4px;
-  left: 1rem;
+  top: 6px;
+  left: 2.2rem;
 }
 label {
   position: absolute;
